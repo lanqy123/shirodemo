@@ -1,0 +1,63 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8"/>
+    <title>login</title>
+</head>
+<body>
+<shiro:guest>
+    <a th:href="@{/login}">登录</a> <a>注册</a>
+</shiro:guest>
+
+<shiro:user>
+    欢迎<shiro:principal property="username"/>  &nbsp;
+    <a th:href="@{/logout}">退出</a>
+</shiro:user>
+
+
+index page..
+
+<shiro:hasRole="user">
+有用户角色哦、、、、
+</shiro:hasRole>
+<shiro:hasRole="admin">
+有admin角色哦、、、、
+</shiro:hasRole>
+<br>
+<a th:href="@{/su}">苏方法</a>
+
+<br>
+<a th:href="@{/xiao}">小方法</a>
+
+<br/>
+
+<div shiro:hasRole="user">
+    ===有用户角色哦、、、、
+</div>
+<br/>
+<shiro:authenticated>
+    w jinguo renzl...
+</shiro:authenticated>
+
+
+<br/>
+<div shiro:hasRole="admin">
+    ===有admin角色哦、、、、
+</div>
+<div shiro:lacksRole="admin">
+    ===mei有admin角色哦、、、、
+</div>
+
+<br/>
+
+<script th:src="@{/js/jquery-2.2.3.min.js}"></script>
+<script>
+
+    $(function(){
+
+        console.log('<shiro:principal property="username"/>');
+    })
+
+</script>
+</body>
+</html>
