@@ -3,6 +3,7 @@ package com.example.shirodemo.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.example.shirodemo.aop.NeedLogin;
 import com.example.shirodemo.bean.User;
 import com.example.shirodemo.dao.UserDao;
 import org.apache.shiro.SecurityUtils;
@@ -38,6 +39,7 @@ public class LoginController {
 
     private static Logger logger=LoggerFactory.getLogger(LoginController.class);
 
+    @NeedLogin("aaaaa")
     @PostMapping("login")
     public ModelAndView login(User user, RedirectAttributes redirectAttributes, boolean rememberMe) {
         ModelAndView view =new ModelAndView();
