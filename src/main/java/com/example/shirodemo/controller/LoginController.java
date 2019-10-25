@@ -3,9 +3,8 @@ package com.example.shirodemo.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.example.shirodemo.aop.NeedLogin;
+import com.example.shirodemo.aop.LoginConfig;
 import com.example.shirodemo.bean.User;
-import com.example.shirodemo.dao.UserDao;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
@@ -17,7 +16,6 @@ import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,7 +37,7 @@ public class LoginController {
 
     private static Logger logger=LoggerFactory.getLogger(LoginController.class);
 
-    @NeedLogin("aaaaa")
+    @LoginConfig(value = "loginPost")
     @PostMapping("login")
     public ModelAndView login(User user, RedirectAttributes redirectAttributes, boolean rememberMe) {
         ModelAndView view =new ModelAndView();
@@ -80,6 +78,7 @@ public class LoginController {
 
     }
 
+    @LoginConfig(value = "loginGet",needLogin = true)
     @GetMapping("/login")
     public String login(HttpServletRequest request) {
         try {
@@ -94,6 +93,7 @@ public class LoginController {
         }
         return "login";
     }
+    @LoginConfig(value = "su",needLogin = true)
     @RequestMapping("su")
     public ModelAndView su() {
         ModelAndView view =new ModelAndView("index");
@@ -103,6 +103,7 @@ public class LoginController {
     }
 
 
+    @LoginConfig(value = "xiao",needLogin = true)
     @RequiresRoles({"admin"})
     @RequestMapping("xiao")
     public ModelAndView xiao() {

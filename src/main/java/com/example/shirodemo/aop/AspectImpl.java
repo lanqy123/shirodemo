@@ -14,7 +14,7 @@
 //@Component
 //@Aspect
 //public class AspectImpl {
-//    @Pointcut("@annotation(com.example.shirodemo.aop.NeedLogin)")
+//    @Pointcut("@annotation(com.example.shirodemo.aop.LoginConfig)")
 //    private void cut() {
 //        System.out.println("3");
 //    }

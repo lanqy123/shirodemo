@@ -3,7 +3,7 @@ package com.example.shirodemo.aop;
 import java.lang.annotation.*;
 
 /**
- * description:
+ * description:自定义注解
  *
  * @author qingyu.lan@ucarinc.com
  * @version 1.0
@@ -12,8 +12,8 @@ import java.lang.annotation.*;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD})
-public @interface NeedLogin {
+public @interface LoginConfig {
     String value() default "";
 
-    boolean isLogin() default false;
+    boolean needLogin() default false;
 }

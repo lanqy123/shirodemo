@@ -21,8 +21,7 @@ import org.springframework.context.annotation.Configuration;
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 
 /**
- * description:
- *
+ * description:shiro
  * @author qingyu.lan@ucarinc.com
  * @version 1.0
  * @date: 2019-10-22 09:37:58

@@ -1,9 +1,10 @@
 package com.example.shirodemo.aop;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
@@ -19,40 +20,32 @@ import java.lang.reflect.Method;
 @Component
 public class MyFirstAspect {
 
-    @Pointcut("@annotation(NeedLogin)")
+    private static Logger logger= LoggerFactory.getLogger(MyFirstAspect.class);
+
+    @Pointcut("@annotation(com.example.shirodemo.aop.LoginConfig)")
     public void annotationPointcut() {
     }
-
-//    @Around("annotationPointcut()")
-//    public void around(ProceedingJoinPoint joinPoint) throws Throwable {
-//        System.out.println("1");
-//        try {
-//            joinPoint.proceed();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        System.out.println("4");
-//
-//    }
 
     @Before("annotationPointcut()")
     public void beforePointcut(JoinPoint joinPoint) {
         String value =getAnnotationValue(joinPoint);
-        System.out.println("准备"+value);
+        logger.info("beforePointcut  "+value);
+
     }
 
     @After("annotationPointcut()")
     public void afterPointcut(JoinPoint joinPoint) {
         String value =getAnnotationValue(joinPoint);
-        System.out.println("结束"+value);
+        logger.info("afterPointcut  "+value);
     }
     public String getAnnotationValue(JoinPoint joinPoint){
         MethodSignature methodSignature =  (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
-        NeedLogin annotation = method.getAnnotation(NeedLogin.class);
+        LoginConfig annotation = method.getAnnotation(LoginConfig.class);
+
         String value = annotation.value();
-        Boolean isLogin = annotation.isLogin();
-        return value+isLogin;
+        Boolean isLogin = annotation.needLogin();
+        return "注解【"+annotation+"】 value= "+value+"  needLogin= "+isLogin;
     }
 }
 
