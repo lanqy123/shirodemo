@@ -1,6 +1,7 @@
 package com.example.shirodemo.interceptor;
 
 import com.example.shirodemo.aop.LoginConfig;
+import com.example.shirodemo.exception.NotLoginException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -35,6 +36,11 @@ public class UserConfig implements HandlerInterceptor {
                 logger.info("您将进入的方法： "+handler+" 不需要登陆");
             }else {
                 logger.info("您将进入的方法： "+handler+" 需要登陆");
+                try{
+                    throw new NotLoginException("自定义异常:请登录");
+                }catch (Exception e) {
+                    System.out.println(e);
+                }
             }
         }
         return true;

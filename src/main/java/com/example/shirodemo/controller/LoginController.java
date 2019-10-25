@@ -78,7 +78,7 @@ public class LoginController {
 
     }
 
-    @LoginConfig(value = "loginGet",needLogin = true)
+    @LoginConfig(value = "loginGet")
     @GetMapping("/login")
     public String login(HttpServletRequest request) {
         try {
