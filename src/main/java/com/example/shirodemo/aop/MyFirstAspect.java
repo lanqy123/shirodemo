@@ -1,5 +1,6 @@
 package com.example.shirodemo.aop;
 
+import com.example.shirodemo.annotation.LoginConfig;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -22,7 +23,7 @@ public class MyFirstAspect {
 
     private static Logger logger= LoggerFactory.getLogger(MyFirstAspect.class);
 
-    @Pointcut("@annotation(com.example.shirodemo.aop.LoginConfig)")
+    @Pointcut("@annotation(com.example.shirodemo.annotation.LoginConfig)")
     public void annotationPointcut() {
     }
 

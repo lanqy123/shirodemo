@@ -1,4 +1,4 @@
-package com.example.shirodemo.aop;
+package com.example.shirodemo.annotation;
 
 import java.lang.annotation.*;
 

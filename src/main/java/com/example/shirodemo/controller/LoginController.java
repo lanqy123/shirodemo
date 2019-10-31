@@ -3,7 +3,7 @@ package com.example.shirodemo.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.example.shirodemo.aop.LoginConfig;
+import com.example.shirodemo.annotation.LoginConfig;
 import com.example.shirodemo.bean.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;

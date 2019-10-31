@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    master:
+      jdbc-url: jdbc:mysql://121.199.51.233:3306/master?useUnicode=true&characterEncoding=UTF8&useServerPrepStmts=true&prepStmtCacheSqlLimit=256&cachePrepStmts=true&prepStmtCacheSize=256&rewriteBatchedStatements=true
+      username: admin
+      password: Qwe@1234!
+#      driver-class-name: com.mysql.jdbc.Driver
+    slave1:
+      jdbc-url: jdbc:mysql://121.199.51.233:3306/slave1?useUnicode=true&characterEncoding=UTF8&useServerPrepStmts=true&prepStmtCacheSqlLimit=256&cachePrepStmts=true&prepStmtCacheSize=256&rewriteBatchedStatements=true
+      username: admin   # 只读账户
+      password: Qwe@1234!
+#      driver-class-name: com.mysql.jdbc.Driver
+    slave2:
+      jdbc-url: jdbc:mysql://121.199.51.233:3306/slave2?useUnicode=true&characterEncoding=UTF8&useServerPrepStmts=true&prepStmtCacheSqlLimit=256&cachePrepStmts=true&prepStmtCacheSize=256&rewriteBatchedStatements=true
+      username: admin   # 只读账户
+      password: Qwe@1234!
+#      driver-class-name: com.mysql.jdbc.Driver

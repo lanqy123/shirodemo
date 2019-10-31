@@ -1,6 +1,6 @@
 package com.example.shirodemo.interceptor;
 
-import com.example.shirodemo.aop.LoginConfig;
+import com.example.shirodemo.annotation.LoginConfig;
 import com.example.shirodemo.exception.NotLoginException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
